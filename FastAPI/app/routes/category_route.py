@@ -1,4 +1,5 @@
 """ This module contains the routes for the category service. """
+from models.category import Category
 from services.category_service import CategoryService
 from fastapi import APIRouter
 
@@ -29,7 +30,7 @@ def get_category(category_id: int):
     return category_service.get_category(category_id)
 
 @category_route.post("/categories")
-def create_category(category):
+def create_category(category: Category):
     """
     Create a new category
     
