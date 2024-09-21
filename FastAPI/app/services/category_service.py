@@ -1,4 +1,5 @@
 """ This module contains the CRUD operations for the category model """
+#added comment to validate pylint on github
 from config.database import CategoryModel
 from peewee import DoesNotExist
 from models.category import Category
