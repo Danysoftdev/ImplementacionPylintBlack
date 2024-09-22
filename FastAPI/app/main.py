@@ -37,4 +37,4 @@ def read_root():
     return RedirectResponse(url="/docs")
 
 
-app.include_router(category_route, prefix="/api/", tags=["categories"])
+app.include_router(category_route, prefix="/api/categories", tags=["categories"])
