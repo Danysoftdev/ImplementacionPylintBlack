@@ -5,7 +5,7 @@ the Peewee model for interacting with the 'employees' table.
 # pylint: disable=too-few-public-methods
 import os
 from dotenv import load_dotenv
-from peewee import Model, MySQLDatabase, AutoField, CharField
+from peewee import Model, MySQLDatabase, AutoField, CharField, DecimalField, ForeignKeyField
 
 load_dotenv()
 
@@ -37,3 +37,37 @@ class CategoryModel(Model):
         """
         database = database
         table_name = "categories"
+
+class ProductModel(Model):
+    """
+    ProductModel represents the product entity in the database.
+
+    Attributes:
+        id (AutoField): Unique identifier for the product, automatically incremented.
+        name (CharField): Name of the product with a maximum length of 50 characters.
+        price (DecimalField): Price of the product.
+        category (ForeignKeyField): Foreign key to the Categoria model, establishing
+        a relationship between products and categories.
+
+    Meta:
+        database: The database connection to use for this model.
+        table_name (str): The name of the table in the database.
+    """
+
+    id = AutoField(primary_key=True)
+    name = CharField(max_length=50)
+    description = CharField(max_length=255)
+    price = DecimalField()
+    category = ForeignKeyField(CategoryModel, backref="products")
+
+    class Meta:
+        """
+        Meta class for ProductModel.
+
+        Attributes:
+        database (Database): The database connection to use for this model.
+        table_name (str): The name of the table in the database.
+        """
+
+        database = database
+        table_name = "products"
