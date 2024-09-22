@@ -1,7 +1,8 @@
 """ Main module of the FastAPI application """
 from contextlib import asynccontextmanager
 from starlette.responses import RedirectResponse
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from app.helpers.api_key_auth import get_api_key
 from app.config.database import database as connection
 from app.routes.category_route import category_route
 from app.routes.product_route import product_route
@@ -27,7 +28,7 @@ async def lifespan(_app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
-@app.get("/")
+@app.get("/", include_in_schema=False)
 def read_root():
     """
     Redirect to the API documentation
@@ -38,5 +39,7 @@ def read_root():
     return RedirectResponse(url="/docs")
 
 
-app.include_router(category_route, prefix="/api", tags=["categories"])
-app.include_router(product_route, prefix="/api", tags=["products"])
+app.include_router(category_route, prefix="/api", tags=["categories"],
+                   dependencies=[Depends(get_api_key)])
+app.include_router(product_route, prefix="/api", tags=["products"],
+                   dependencies=[Depends(get_api_key)])
