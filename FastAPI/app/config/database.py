@@ -2,7 +2,7 @@
 This module sets up the database connection and defines the ORM models for the application.
 Classes:
     Categoria(Model): Represents the 'categoria' table in the database.
-    ProductoModel(Model): Represents the 'productos' table in the database.
+    ProductModel(Model): Represents the 'products' table in the database.
 Attributes:
     database (MySQLDatabase): The database connection object.
 Usage:
@@ -14,9 +14,11 @@ Usage:
         - MYSQL_HOST: Hostname of the MySQL server.
         - MYSQL_PORT: Port number of the MySQL server.
 """
+
 import os
 from dotenv import load_dotenv
 from peewee import *
+
 load_dotenv()
 
 database = MySQLDatabase(
@@ -27,38 +29,40 @@ database = MySQLDatabase(
     port=int(os.getenv("MYSQL_PORT")),
 )
 
-class Categoria(Model):
+
+class CategoryModel(Model):
     id
 
 
-
-
-class ProductoModel(Model):
+class ProductModel(Model):
     """
-ProductoModel represents the product entity in the database.
+    ProductModel represents the product entity in the database.
 
-Attributes:
-    id (AutoField): Unique identifier for the product, automatically incremented.
-    nombre (CharField): Name of the product with a maximum length of 50 characters.
-    precio (DecimalField): Price of the product.
-    categoria (ForeignKeyField): Foreign key to the Categoria model, establishing
-    a relationship between products and categories.
+    Attributes:
+        id (AutoField): Unique identifier for the product, automatically incremented.
+        nombre (CharField): Name of the product with a maximum length of 50 characters.
+        precio (DecimalField): Price of the product.
+        categoria (ForeignKeyField): Foreign key to the Categoria model, establishing
+        a relationship between products and categories.
 
-Meta:
-    database: The database connection to use for this model.
-    table_name (str): The name of the table in the database.
-"""
+    Meta:
+        database: The database connection to use for this model.
+        table_name (str): The name of the table in the database.
+    """
+
     id = AutoField(primary_key=True)
     nombre = CharField(max_length=50)
     precio = DecimalField()
-    categoria = ForeignKeyField(Categoria, backref='productos')
+    categoria = ForeignKeyField(Categoria, backref="products")
+
     class Meta:
         """
-        Meta class for ProductoModel.
+        Meta class for ProductModel.
 
         Attributes:
         database (Database): The database connection to use for this model.
         table_name (str): The name of the table in the database.
         """
+
         database = database
-        table_name = "productos"
+        table_name = "products"

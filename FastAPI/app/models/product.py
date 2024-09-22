@@ -1,10 +1,10 @@
 """
-producto.py
+product.py
 
-This module defines the Producto model using Pydantic's BaseModel.
+This module defines the Product model using Pydantic's BaseModel.
 
 Classes:
-    Producto: Represents a product entity with attributes such as id, nombre,
+    Product: Represents a product entity with attributes such as id, nombre,
     descripcion, precio, and categoria_id.
 
 Attributes:
@@ -16,9 +16,9 @@ from decimal import Decimal
 from pydantic import BaseModel
 
 
-class Producto(BaseModel):
+class Product(BaseModel):
     """
-    Producto model representing a product entity.
+    Product model representing a product entity.
 
     Attributes:
         id (int): Unique identifier for the product.
