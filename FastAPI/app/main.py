@@ -1,9 +1,9 @@
 """ Main module of the FastAPI application """
 from contextlib import asynccontextmanager
 from starlette.responses import RedirectResponse
-from config.database import database as connection
-from routes.category_route import category_route
 from fastapi import FastAPI
+from app.config.database import database as connection
+from app.routes.category_route import category_route
 
 
 @asynccontextmanager
