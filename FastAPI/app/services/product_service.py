@@ -1,8 +1,8 @@
 """ This module contains the CRUD operations for the product model """
 from peewee import DoesNotExist
 from fastapi import Body
-from app.config.database import ProductModel
-from app.models.product import Product
+from config.database import ProductModel
+from models.product import Product
 
 class ProductService:
     """

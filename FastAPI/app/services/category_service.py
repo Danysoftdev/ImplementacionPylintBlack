@@ -1,8 +1,8 @@
 """ This module contains the CRUD operations for the category model """
 from peewee import DoesNotExist
 from fastapi import Body
-from app.config.database import CategoryModel
-from app.models.category import Category
+from config.database import CategoryModel
+from models.category import Category
 
 class CategoryService:
     """

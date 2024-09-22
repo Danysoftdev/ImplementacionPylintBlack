@@ -1,6 +1,6 @@
 """ This module contains the routes for the product service. """
 from fastapi import APIRouter
-from app.services.product_service import ProductService
+from services.product_service import ProductService
 
 product_route = APIRouter()
 product_service = ProductService()

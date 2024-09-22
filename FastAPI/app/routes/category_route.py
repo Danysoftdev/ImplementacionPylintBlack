@@ -1,7 +1,7 @@
 """ This module contains the routes for the category service. """
 from fastapi import APIRouter
-from app.models.category import Category
-from app.services.category_service import CategoryService
+from models.category import Category
+from services.category_service import CategoryService
 
 category_service = CategoryService()
 category_route = APIRouter()

@@ -2,10 +2,10 @@
 from contextlib import asynccontextmanager
 from starlette.responses import RedirectResponse
 from fastapi import FastAPI, Depends
-from app.helpers.api_key_auth import get_api_key
-from app.config.database import database as connection
-from app.routes.category_route import category_route
-from app.routes.product_route import product_route
+from helpers.api_key_auth import get_api_key
+from config.database import database as connection
+from routes.category_route import category_route
+from routes.product_route import product_route
 
 
 @asynccontextmanager
