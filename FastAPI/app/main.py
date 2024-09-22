@@ -4,6 +4,7 @@ from starlette.responses import RedirectResponse
 from fastapi import FastAPI
 from app.config.database import database as connection
 from app.routes.category_route import category_route
+from app.routes.product_route import product_route
 
 
 @asynccontextmanager
@@ -37,4 +38,5 @@ def read_root():
     return RedirectResponse(url="/docs")
 
 
-app.include_router(category_route, prefix="/api/categories", tags=["categories"])
+app.include_router(category_route, prefix="/api", tags=["categories"])
+app.include_router(product_route, prefix="/api", tags=["products"])
