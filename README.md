@@ -24,32 +24,38 @@ Make sure you have the following software installed:
     pip install -r requirements.txt
     ```
 
+3. Create and complete the .env file:
+    ```bash
+    cp .env.example .env
+    ```
+
+    Then edit the .env file to provide the appropriate values, such as database credentials.
+
 ## Starting the Database with Docker
 
 To start the database using Docker, follow these steps:
 
-1. Make sure you are in the root directory of the project, then run the following command:
+1. Before running the containers, make sure to build them using the following command from the project root:
+
+    ```bash
+    docker-compose build
+    ```
+
+2. Run the following command:
     ```bash
     docker-compose up -d
     ```
 
 This command will start the containers defined in the `docker-compose.yml` file, including the database configured for your project. The `-d` option runs the containers in the background.
 
-2. To verify that the containers are running, use:
+3. To verify that the containers are running, use:
     ```bash
     docker ps
     ```
 
 ## Running the Application
 
-1. Start the FastAPI application by running:
-    ```bash
-    uvicorn main:app --reload
-    ```
-
-This will start the FastAPI development server. By default, the application will be available at `http://127.0.0.1:8000`.
-
-2. Access the interactive API documentation at:
+1. Access the interactive API documentation at:
     - Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
     - Redoc: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
