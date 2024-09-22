@@ -1,6 +1,7 @@
 """ This module contains the routes for the product service. """
 from fastapi import APIRouter
 from services.product_service import ProductService
+from models.product import Product
 
 product_route = APIRouter()
 product_service = ProductService()
@@ -29,7 +30,7 @@ def get_product(product_id: int):
     return product_service.get_product(product_id)
 
 @product_route.post("/products")
-def create_product(product):
+def create_product(product: Product):
     """
     Create a new product
     

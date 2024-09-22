@@ -29,7 +29,7 @@ class Product(BaseModel):
     """
 
     id: int
-    nombre: str
-    descripcion: str
-    precio: Decimal
-    categoria_id: int
+    name: str
+    description: str
+    price: Decimal
+    category_id: int

@@ -58,7 +58,7 @@ class ProductModel(Model):
     name = CharField(max_length=50)
     description = CharField(max_length=255)
     price = DecimalField()
-    category = ForeignKeyField(CategoryModel, backref="products")
+    category_id = ForeignKeyField(CategoryModel, backref="products")
 
     class Meta:
         """

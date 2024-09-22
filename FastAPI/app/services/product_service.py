@@ -46,9 +46,10 @@ class ProductService:
         product (Product): The product object
         """
         new_product = ProductModel.create(
-            nombre=product.nombre,
-            precio=product.precio,
-            categoria=product.categoria
+            name=product.name,
+            description=product.description,
+            price=product.price,
+            category_id=product.category_id
         )
         return new_product.__data__  # Return the created product as a dictionary
 
